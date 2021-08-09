@@ -8,6 +8,9 @@
     "linuxAdminUsername": {
       "value": ""
     },
+    "clustername": {
+      "value": "aksjagord01"
+    },
     "sshRSAPublicKey": {
       "reference": {
         "keyVault": {
