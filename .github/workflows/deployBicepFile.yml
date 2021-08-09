@@ -20,5 +20,5 @@ jobs:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: ${{ secrets.AZURE_RG }}
         template: ./azuredeploy.bicep
-        parameters: storagePrefix=mystore
+        parameters: ./azuredeploy.parameters.json
         failOnStdErr: false
