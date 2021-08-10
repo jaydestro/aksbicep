@@ -1,6 +1,6 @@
 // mandatory params
 param dnsPrefix string = 'akscluster'
-param linuxAdminUsername string
+param linuxAdminUsername string = 'aksadmin'
 param sshRSAPublicKey string
 param servicePrincipalClientId string
 
