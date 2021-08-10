@@ -58,15 +58,4 @@ resource aks 'Microsoft.ContainerService/managedClusters@2020-09-01' = {
   }
 }
 
-resource containerRegistry 'Microsoft.ContainerRegistry/registries@2019-05-01' = {
-  name: acrname
-  location: resourceGroup().location
-  sku: {
-    name: 'Classic'
-  }
-  properties: {
-    adminUserEnabled: true
-  }
-}
-
 output controlPlaneFQDN string = aks.properties.fqdn
