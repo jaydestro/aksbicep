@@ -1,11 +1,12 @@
 // mandatory params
-param dnsPrefix string = 'akscluster-'
+param dnsPrefix string = 'akscluster'
 param linuxAdminUsername string
 param sshRSAPublicKey string
 param servicePrincipalClientId string
+param acrprefix string  = 'acr'
 
 param uniqueclustername string = '${dnsPrefix}${uniqueString(resourceGroup().id)}'
-
+param acrname string = '${acrprefix}${uniqueString(resourceGroup().id)}'
 
 @secure()
 param servicePrincipalClientSecret string
@@ -54,6 +55,17 @@ resource aks 'Microsoft.ContainerService/managedClusters@2020-09-01' = {
       clientId: servicePrincipalClientId
       secret: servicePrincipalClientSecret
     }
+  }
+}
+
+resource containerRegistry 'Microsoft.ContainerRegistry/registries@2019-05-01' = {
+  name: acrname
+  location: resourceGroup().location
+  sku: {
+    name: 'Classic'
+  }
+  properties: {
+    adminUserEnabled: true
   }
 }
 
