@@ -2,13 +2,7 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "dnsPrefix": {
-      "value": "aksjagord"
-    },
     "linuxAdminUsername": {
-      "value": "aksjagord"
-    },
-    "clustername": {
       "value": "aksjagord"
     },
     "sshRSAPublicKey": {

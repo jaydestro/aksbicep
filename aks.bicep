@@ -1,14 +1,17 @@
 // mandatory params
-param dnsPrefix string
+param dnsPrefix string = 'aksjagord'
 param linuxAdminUsername string
 param sshRSAPublicKey string
 param servicePrincipalClientId string
+
+param uniqueclustername string = '${dnsPrefix}${uniqueString(resourceGroup().id)}'
+
 
 @secure()
 param servicePrincipalClientSecret string
 
 // optional params
-param clusterName string = 'aks101cluster'
+param clusterName string = uniqueclustername
 param location string = resourceGroup().location
 
 @minValue(0)
