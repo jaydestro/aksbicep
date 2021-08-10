@@ -3,10 +3,8 @@ param dnsPrefix string = 'akscluster'
 param linuxAdminUsername string
 param sshRSAPublicKey string
 param servicePrincipalClientId string
-param acrprefix string  = 'acr'
 
 param uniqueclustername string = '${dnsPrefix}${uniqueString(resourceGroup().id)}'
-param acrname string = '${acrprefix}${uniqueString(resourceGroup().id)}'
 
 @secure()
 param servicePrincipalClientSecret string
