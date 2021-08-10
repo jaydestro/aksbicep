@@ -1,5 +1,5 @@
 // mandatory params
-param dnsPrefix string = 'aksjagord'
+param dnsPrefix string = 'akscluster-'
 param linuxAdminUsername string
 param sshRSAPublicKey string
 param servicePrincipalClientId string
