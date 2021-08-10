@@ -19,7 +19,7 @@ Pre-requisites
 * Update `azuredeploy.parameters.json` with your vault details 
 
 ```
-          "id": "/subscriptions/{subscriptionID}/resourceGroups/{resource group}/providers/Microsoft.KeyVault/vaults/{keyvault name}"
+ "id": "/subscriptions/{subscriptionID}/resourceGroups/{resource group}/providers/Microsoft.KeyVault/vaults/{keyvault name}"
 ```
 
 When you commit to the main branch, it will kick off a build.  You'll get an AKS cluster with a service principal.  The cluster will be given a randomized name, however you can add custom ones to the parameters file.
