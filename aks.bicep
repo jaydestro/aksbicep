@@ -1,10 +1,10 @@
 // mandatory params
-param dnsPrefix string = 'akscluster'
+param dnsPrefix string = 'voteappprod'
 param linuxAdminUsername string
 param sshRSAPublicKey string
 param servicePrincipalClientId string
 
-param uniqueclustername string = '${dnsPrefix}${uniqueString(resourceGroup().id)}'
+param uniqueclustername string = 'voteappprod'
 
 @secure()
 param servicePrincipalClientSecret string
