@@ -25,3 +25,18 @@ Pre-requisites
 ```
 
 When you commit to the main branch, it will kick off a build.  You'll get an AKS cluster with a service principal.  The cluster will be given a randomized name, however you can add custom ones to the parameters file.
+
+## With Azure CLI
+
+You can execute the following command in the root of the directory with an autheticated Azure CLI.
+
+This example creates a resource group then creates a deployment with ARM.
+
+```
+az login 
+
+az group create -n <resource group name> -l <location>
+
+az deployment group create  --name <deployment name>  --resource-group <resource group name> --template-file aks.bicep --parameters='@azuredeploy.parameters.json'
+```
+
