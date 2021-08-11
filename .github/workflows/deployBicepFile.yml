@@ -1,6 +1,6 @@
 on: [push]
 env:
-  CLUSTER_NAME: voteappprod02
+  CLUSTER_NAME: voteappprod
   CLUSTER_RESOURCE_GROUP: aksbicep
   NAMESPACE: voteappprod
   APP_NAME: voteappprod

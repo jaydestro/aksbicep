@@ -1,8 +1,8 @@
 # aksbicep
 
-This is still a WIP.
+## This is still a WIP.
 
-An example to create an AKS cluster with secrets from Azure Key Vault with Bicep and GitHub actions.
+An example to create an AKS cluster with secrets from Azure Key Vault with Bicep and GitHub actions.  Once the cluster is created, the workflow will apply `manifests/deployment.yml` that's a pre-created image.
 
 Pre-requisites 
 
@@ -38,5 +38,8 @@ az login
 az group create -n <resource group name> -l <location>
 
 az deployment group create  --name <deployment name>  --resource-group <resource group name> --template-file aks.bicep --parameters='@azuredeploy.parameters.json'
-```
 
+az aks get-credentials --name voteappprod --resource group <resource group name>
+
+kubectl apply -f ./manifests/deployment.yml
+```
