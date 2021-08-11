@@ -1,5 +1,7 @@
 # aksbicep
 
+This is still a WIP.
+
 An example to create an AKS cluster with secrets from Azure Key Vault with Bicep and GitHub actions.
 
 Pre-requisites 
