@@ -30,14 +30,14 @@ An example to create an AKS cluster with secrets from Azure Key Vault with Bicep
 
 * [Store your credenitals `sshRSAPublicKey`,`servicePrincipalClientId`, and `servicePrincipalClientSecret` parameters as secrets.](https://cda.ms/2kC) These secrets will have your SSH keys to access the cluster nodes for troubleshooting, your Azure subscription ID, and your Service Principal credentials.
 
-![Azure Resource Group](images/key-vault.png | width=500)
+![Azure Resource Group](images/key-vault.png)
 
 * Update `azuredeploy.parameters.json` with `uniqueclustername`, `dnsPrefix`, `sshRSAPublicKey`, `servicePrincipalClientId`, and `servicePrincipalClientSecret` details. 
 
 ```
  "id": "/subscriptions/{subscriptionID}/resourceGroups/{resource group}/providers/Microsoft.KeyVault/vaults/{keyvault name}"
 ```
-![Azure Resource Group](images/resource-group.png | width=500)
+![Azure Resource Group](images/resource-group.png)
 
 Set the environment variables on the `.github\workflow.json` file to your cluster name, resource group, kubernetes namespace, and application name.
 
@@ -73,7 +73,7 @@ kube-system   metrics-server                   ClusterIP      10.0.212.100   <no
 voteappprod   azure-vote-back                  ClusterIP      10.0.62.6      <none>         6379/TCP        47h
 voteappprod   azure-vote-front                 LoadBalancer   10.0.19.38     1.2.3.4   80:30305/TCP    47h
 ```
-![Voting App](images/vote-app.png | width=500)
+![Voting App](images/vote-app.png)
 
 ## With Azure CLI
 
