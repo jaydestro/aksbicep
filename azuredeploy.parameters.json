@@ -5,10 +5,16 @@
     "linuxAdminUsername": {
       "value": "aksadmin"
     },
+    "uniqueclustername": {
+      "value": "<cluster-name>"
+    },
+    "dnsPrefix": {
+      "value": "<dns-name>"
+    },    
     "sshRSAPublicKey": {
       "reference": {
         "keyVault": {
-          "id": "/subscriptions/f9b5da45-54cc-42d3-a58b-87adf6ad27ad/resourceGroups/aksbicep/providers/Microsoft.KeyVault/vaults/aksbicep"
+          "id": "/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.KeyVault/vaults/<vault name>"
         },
         "secretName": "sshkey"
       }
@@ -16,7 +22,7 @@
     "servicePrincipalClientId": {
       "reference": {
         "keyVault": {
-          "id": "/subscriptions/f9b5da45-54cc-42d3-a58b-87adf6ad27ad/resourceGroups/aksbicep/providers/Microsoft.KeyVault/vaults/aksbicep"
+          "id": "/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.KeyVault/vaults/<vault name>"
         },
         "secretName": "servicePrincipalClientId"
       }
@@ -24,7 +30,7 @@
     "servicePrincipalClientSecret": {
       "reference": {
         "keyVault": {
-          "id": "/subscriptions/f9b5da45-54cc-42d3-a58b-87adf6ad27ad/resourceGroups/aksbicep/providers/Microsoft.KeyVault/vaults/aksbicep"
+          "id": "/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.KeyVault/vaults/<vault name>"
         },
         "secretName": "clientSecret"
       }
