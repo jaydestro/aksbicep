@@ -14,9 +14,10 @@ An example to create an AKS cluster with secrets from Azure Key Vault with Bicep
 
 * Fork this repository so you can run GitHub Actions
 
+* [Sign up for Azure, $200 free credit](https://cda.ms/2kz)
+
 * Clone the fork locally or in your Azure Cloud Shell.
 
-* [Sign up for Azure, $200 free credit](https://cda.ms/2kz)
 
 ## Deployment
 
