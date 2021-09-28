@@ -29,15 +29,28 @@ An example to create an AKS cluster with secrets from Azure Key Vault with Bicep
 
 `az group create -n <rg name> --location <region>`
 
+* Get your subscription ID
+
+`az account list --query "[?isDefault]"`
+
 * Follow the ["Generate deployment credentials"](https://cda.ms/2kx) and ["Configure the GitHub secrets"](https://cda.ms/2ky) of this guide.  Create secrets in the repo for `AZURE_CREDENTIALS`, `AZURE_RG`, and `AZURE_SUBSCRIPTION` to connect your Azure account to the GitHub repo for actions to run.
 
+`az ad sp create-for-rbac --name {myApp} --role contributor --scopes /subscriptions/{subscription-id}/resourceGroups/{MyResourceGroup} --sdk-auth`
+
 * [Create a Key Vault](https://cda.ms/2kB)
+`az keyvault create --name "<your-unique-keyvault-name>" --resource-group "myResourceGroup" --location "EastUS"`
+
 
 * [Store your credenitals `sshRSAPublicKey`,`servicePrincipalClientId`, and `servicePrincipalClientSecret` parameters as secrets.](https://cda.ms/2kC) These secrets will have your SSH keys to access the cluster nodes for troubleshooting, your Azure subscription ID, and your Service Principal credentials.
+```
+az keyvault secret set --vault-name "<your-unique-keyvault-name>" --name "sshRSAPublicKey" --value "rsa-ssh etc etc etc"
+az keyvault secret set --vault-name "<your-unique-keyvault-name>" --name "servicePrincipalClientId" --value "<output from service principal creation>"
+az keyvault secret set --vault-name "<your-unique-keyvault-name>" --name "servicePrincipalClientSecret" --value "<output from service principal creation>"
+```
 
 ![Azure Resource Group](images/key-vault.png)
 
-* Update `azuredeploy.parameters.json` with `uniqueclustername`, `dnsPrefix`, `sshRSAPublicKey`, `servicePrincipalClientId`, and `servicePrincipalClientSecret` details. 
+* Update [azuredeploy.parameters.json](https://github.com/jaydestro/aks_bicep_template/blob/main/azuredeploy.parameters.json) with `uniqueclustername`, `dnsPrefix`, `sshRSAPublicKey`, `servicePrincipalClientId`, and `servicePrincipalClientSecret` details. 
 
 ```
  "id": "/subscriptions/{subscriptionID}/resourceGroups/{resource group}/providers/Microsoft.KeyVault/vaults/{keyvault name}"
