@@ -8,6 +8,10 @@ An example to create an AKS cluster with secrets from Azure Key Vault with Bicep
 
 [Azure Key Vault](https://cda.ms/2nK) protects cryptographic keys, certificates (and the private keys associated with the certificates), and secrets (such as connection strings and passwords) in the cloud.
 
+[Azure Kubernetes Service](https://cda.ms/2Kk)Easily define, deploy, debug, and upgrade even the most complex Kubernetes applications, and automatically containerize your applications. Use modern application development to accelerate time to market.
+
+
+
 ## Pre-requisites 
 
 * An [SSH public key](https://cda.ms/2nD).
