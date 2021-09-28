@@ -35,7 +35,9 @@ An example to create an AKS cluster with secrets from Azure Key Vault with Bicep
 
 `az account list --query "[?isDefault]"`
 
-* Follow the ["Generate deployment credentials"](https://cda.ms/2kx) and ["Configure the GitHub secrets"](https://cda.ms/2ky) of this guide.  Create secrets in the repo for `AZURE_CREDENTIALS`, `AZURE_RG`, and `AZURE_SUBSCRIPTION` to connect your Azure account to the GitHub repo for actions to run.
+* Follow the ["Generate deployment credentials"](https://cda.ms/2kx) and ["Configure the GitHub secrets"](https://cda.ms/2ky) of this guide.  Create secrets in the repo for `AZURE_CREDENTIALS`, `AZURE_RG`, and `AZURE_SUBSCRIPTION` to connect your Azure account to the GitHub repo for actions to run OR use the CLI commmands below.
+
+`az ad sp create-for-rbac --name {myApp} --role contributor --scopes /subscriptions/{subscription-id}/resourceGroups/{MyResourceGroup} --sdk-auth`
 
 Using GitHub CLI:
 
@@ -57,9 +59,8 @@ gh secret set AZURE_CREDENTIALS -r="<org/repo-name>" -b  \
 }"
 ```
   
-`az ad sp create-for-rbac --name {myApp} --role contributor --scopes /subscriptions/{subscription-id}/resourceGroups/{MyResourceGroup} --sdk-auth`
-
 * [Create a Key Vault](https://cda.ms/2kB)
+
 `az keyvault create --name "<your-unique-keyvault-name>" --resource-group "myResourceGroup" --location "EastUS"`
 
 
