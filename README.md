@@ -39,9 +39,10 @@ An example to create an AKS cluster with secrets from Azure Key Vault with Bicep
 
 Using GitHub CLI:
 
-`gh secret set AZURE_SUBSCRIPTION -r="<org/repo-name>" -b <subscription id>`
-`gh secret set AZURE_RG -r="<org/repo-name>" -b <resource group>`
-`gh secret set AZURE_CREDENTIALS -r="<org/repo-name>" -b  \
+```
+gh secret set AZURE_SUBSCRIPTION -r="<org/repo-name>" -b <subscription id>`
+gh secret set AZURE_RG -r="<org/repo-name>" -b <resource group>`
+gh secret set AZURE_CREDENTIALS -r="<org/repo-name>" -b  \
 "{ \
   "clientId": "<client id>", \
   "clientSecret": "<secret>", \
@@ -54,7 +55,8 @@ Using GitHub CLI:
   "galleryEndpointUrl": "https://gallery.azure.com/", \
   "managementEndpointUrl": "https://management.core.windows.net/" \
 }"
-`
+```
+  
 `az ad sp create-for-rbac --name {myApp} --role contributor --scopes /subscriptions/{subscription-id}/resourceGroups/{MyResourceGroup} --sdk-auth`
 
 * [Create a Key Vault](https://cda.ms/2kB)
