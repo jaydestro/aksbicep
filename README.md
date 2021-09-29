@@ -39,9 +39,31 @@ An example to create an AKS cluster with secrets from Azure Key Vault with Bicep
   
 * [Create a Key Vault](https://cda.ms/2kB)
 
-`az keyvault create --name "<your-unique-keyvault-name>" --resource-group "myResourceGroup" --location "EastUS"`
+Click Create at top of resource group
+Search for Key Vault
+Click Create
+Give a unique name in the Key vault name section
+Click to "Access Policy" section and select the three tick boxes:
+
+✔️ Azure Virtual Machines for deployment
+✔️ Azure Resource Manager for template deployment
+✔️ Azure Disk Encryption for volume encryption
+
+Leave the rest as default, click Review and Create
+
 
 * [Store your credenitals `sshRSAPublicKey`,`servicePrincipalClientId`, and `servicePrincipalClientSecret` parameters as secrets.](https://cda.ms/2kC) These secrets will have your SSH keys to access the cluster nodes for troubleshooting, your Azure subscription ID, and your Service Principal credentials.
+
+Go to your key vault
+Click Secrets
+Click Generate/Import
+Create secret:
+
+Name: sshRSAPublicKey
+Value: output of your ssh key
+Click create
+
+Repeat steps for `servicePrincipalClientId` and `servicePrincipalClientSecret`
 
 ![Azure Resource Group](images/key-vault.png)
 
