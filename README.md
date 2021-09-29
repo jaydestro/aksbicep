@@ -74,16 +74,6 @@ Repeat steps for `servicePrincipalClientId` and `servicePrincipalClientSecret`
 ```
 ![Azure Resource Group](images/resource-group.png)
 
-Set the environment variables on the `.github\workflow.json` file to your cluster name, resource group, kubernetes namespace, and application name.
-
-Example:
-
-```
-  CLUSTER_NAME: voteappprod
-  CLUSTER_RESOURCE_GROUP: aksbicep
-  NAMESPACE: voteappprod
-  APP_NAME: voteappprod
-  ```
 
 When you commit to the main branch, it will kick off a build.  You'll get an AKS cluster with a service principal.  You can add custom names and features to the parameters file.  
 
