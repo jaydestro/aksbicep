@@ -1,10 +1,10 @@
 // mandatory params
-param dnsPrefix string = 'voteappprod'
+param dnsPrefix string
 param linuxAdminUsername string
 param sshRSAPublicKey string
 param servicePrincipalClientId string
 
-param uniqueclustername string = 'voteappprod'
+param uniqueclustername string
 
 @secure()
 param servicePrincipalClientSecret string
