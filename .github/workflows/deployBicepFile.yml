@@ -1,9 +1,9 @@
 on: [push]
 env:
-  CLUSTER_NAME: <azure kubernetes service cluster>
-  CLUSTER_RESOURCE_GROUP: <resource group name>
-  NAMESPACE: <k8s namespace>
-  APP_NAME: <k8s application name>
+  CLUSTER_NAME: voteappprod
+  CLUSTER_RESOURCE_GROUP: ${{ secrets.AZURE_RG }}
+  NAMESPACE: voteappprod
+  APP_NAME: voteappprod
 
   name: Azure ARM
 jobs:
