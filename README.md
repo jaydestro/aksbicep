@@ -10,9 +10,7 @@ An example to create an AKS cluster with secrets from Azure Key Vault with Bicep
 
 [Azure Kubernetes Service](https://cda.ms/2Kk) Easily define, deploy, debug, and upgrade even the most complex Kubernetes applications, and automatically containerize your applications. Use modern application development to accelerate time to market.
 
-
-
-## Pre-requisites 
+## Pre-requisites
 
 * An [SSH public key](https://cda.ms/2nD).
 
@@ -21,7 +19,6 @@ An example to create an AKS cluster with secrets from Azure Key Vault with Bicep
 * [Sign up for Azure, $200 free credit](https://cda.ms/2kz)
 
 * Clone the fork locally or in your Azure Cloud Shell.
-
 
 ## Deployment
 
@@ -33,55 +30,64 @@ An example to create an AKS cluster with secrets from Azure Key Vault with Bicep
 
 `az account list --query "[?isDefault]"`
 
-* Follow the ["Generate deployment credentials"](https://cda.ms/2kx) and ["Configure the GitHub secrets"](https://cda.ms/2ky) of this guide.  Create secrets in the repo for `AZURE_CREDENTIALS`, `AZURE_RG`, and `AZURE_SUBSCRIPTION` to connect your Azure account to the GitHub repo for actions to run OR use the CLI commmands below.
+* Follow the ["Generate deployment credentials"](https://cda.ms/2kx) and ["Configure the GitHub secrets"](https://cda.ms/2ky) of this guide.  Create secrets in the repo for `AZURE_CREDENTIALS`, `AZURE_RG`, and `AZURE_SUBSCRIPTION` to connect your Azure account to the GitHub repo for actions to run OR use the CLI command below to create the required service principal.
 
 `az ad sp create-for-rbac --name {myApp} --role contributor --scopes /subscriptions/{subscription-id}/resourceGroups/{MyResourceGroup} --sdk-auth`
-  
+
 * [Create a Key Vault](https://cda.ms/2kB)
 
-Click Create at top of resource group
-Search for Key Vault
-Click Create
-Give a unique name in the Key vault name section
-Click to "Access Policy" section and select the three tick boxes:
+  * Click Create at top of resource group
+  * Search for Key Vault
+  * Click Create
+  * Give a unique name in the Key vault name section
+  * Click to "Access Policy" section and select the three tick boxes:
 
-✔️ Azure Virtual Machines for deployment
-✔️ Azure Resource Manager for template deployment
-✔️ Azure Disk Encryption for volume encryption
+        ✔️ Azure Virtual Machines for deployment
 
-Leave the rest as default, click Review and Create
+        ✔️ Azure Resource Manager for template deployment
 
+        ✔️ Azure Disk Encryption for volume encryption
 
-* [Store your credenitals `sshRSAPublicKey`,`servicePrincipalClientId`, and `servicePrincipalClientSecret` parameters as secrets.](https://cda.ms/2kC) These secrets will have your SSH keys to access the cluster nodes for troubleshooting, your Azure subscription ID, and your Service Principal credentials.
+  * Leave the rest as default
+  * Click Review and Create
 
-Go to your key vault
-Click Secrets
-Click Generate/Import
-Create secret:
+* [Store your credentials as secrets](https://cda.ms/2kC)
 
-Name: sshRSAPublicKey
-Value: output of your ssh key
-Click create
+    `sshRSAPublicKey`,
+    `servicePrincipalClientId`,
+    and `servicePrincipalClientSecret`
 
-Repeat steps for `servicePrincipalClientId` and `servicePrincipalClientSecret`
+    These secrets will have your SSH keys to access the cluster nodes for troubleshooting and your Service Principal credentials.
+
+  * Create a secret to store `sshRSAPublicKey`
+    * Go to your key vault
+    * Click Secrets
+    * Click Generate/Import
+    * Create secret:
+      * Name: sshRSAPublicKey
+      * Value: output of your ssh key
+    * Click create
+  * Repeat steps for `servicePrincipalClientId` and `servicePrincipalClientSecret`
 
 ![Azure Resource Group](images/key-vault.png)
 
-* Update [azuredeploy.parameters.json](https://github.com/jaydestro/aks_bicep_template/blob/main/azuredeploy.parameters.json) with `uniqueclustername`, `dnsPrefix`, `sshRSAPublicKey`, `servicePrincipalClientId`, and `servicePrincipalClientSecret` details. 
+* Update [azuredeploy.parameters.json](https://github.com/jaydestro/aks_bicep_template/blob/main/azuredeploy.parameters.json) with `uniqueclustername`, `dnsPrefix`, `sshRSAPublicKey`, `servicePrincipalClientId`, and `servicePrincipalClientSecret` details.
 
-```
+To let your template reference KeyVault secrets from parameters, update the `id` to point to the KeyVault you created earlier.
+
+```json
  "id": "/subscriptions/{subscriptionID}/resourceGroups/{resource group}/providers/Microsoft.KeyVault/vaults/{keyvault name}"
 ```
+
 ![Azure Resource Group](images/resource-group.png)
 
-
-When you commit to the main branch, it will kick off a build.  You'll get an AKS cluster with a service principal.  You can add custom names and features to the parameters file.  
+When you commit to the main branch, it will kick off a build.  You'll get an AKS cluster with a service principal.  You can add custom names and features to the parameters file.
 
 Finally the `manifests/deployment.yml` file is loaded which provides you with the [Azure Voting App](https://github.com/Azure-Samples/azure-voting-app-redis), a Python/Flask app with Redis as your data component.
 
 To access your public IP from the loadbalancer:
 
-```
+```bash
 az aks get-credentials --name voteappprod --resource group <resource group name>
 
 kubectl get services --all-namespaces
@@ -98,16 +104,17 @@ kube-system   metrics-server                   ClusterIP      10.0.212.100   <no
 voteappprod   azure-vote-back                  ClusterIP      10.0.62.6      <none>         6379/TCP        47h
 voteappprod   azure-vote-front                 LoadBalancer   10.0.19.38     1.2.3.4   80:30305/TCP    47h
 ```
+
 ![Voting App](images/vote-app.png)
 
 ## With Azure CLI
 
-You can execute the following command in the root of the directory with an autheticated Azure CLI.
+You can execute the following command in the root of the directory with an authenticated Azure CLI.
 
 This example creates a resource group then creates a deployment with ARM.
 
-```
-az login 
+```bash
+az login
 
 az group create -n <resource group name> -l <location>
 
