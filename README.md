@@ -73,7 +73,9 @@ An example to create an AKS cluster with secrets from Azure Key Vault with Bicep
 
 ![Azure Resource Group](images/key-vault.png)
 
-* Update [azuredeploy.parameters.json](https://github.com/jaydestro/aks_bicep_template/blob/main/azuredeploy.parameters.json) with `uniqueclustername`, `dnsPrefix`, `sshRSAPublicKey`, `servicePrincipalClientId`, and `servicePrincipalClientSecret` details.
+* Update [azuredeploy.parameters.json](https://github.com/jaydestro/aks_bicep_template/blob/main/azuredeploy.parameters.json) with  the name of your resource group to `uniqueclustername`, `dnsPrefix`.
+
+Update the `sshRSAPublicKey`, `servicePrincipalClientId`, and `servicePrincipalClientSecret` details:
 
 To let your template reference KeyVault secrets from parameters, update the `id` to point to the KeyVault you created earlier.
 
@@ -85,8 +87,6 @@ To let your template reference KeyVault secrets from parameters, update the `id`
 
 
 Finally the `manifests/deployment.yml` file is loaded which provides you with the [Azure Voting App](https://github.com/Azure-Samples/azure-voting-app-redis), a Python/Flask app with Redis as your data component.  You do not need to make any changes here.
-
-![Kicking off the build](images/job_kicked.png)
 
 When you commit to the main branch, it will kick off a build.  You'll get an AKS cluster with a service principal.  You can add custom names and features to the parameters file.
 
