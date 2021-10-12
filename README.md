@@ -86,7 +86,11 @@ To let your template reference KeyVault secrets from parameters, update the `id`
 
 Finally the `manifests/deployment.yml` file is loaded which provides you with the [Azure Voting App](https://github.com/Azure-Samples/azure-voting-app-redis), a Python/Flask app with Redis as your data component.  You do not need to make any changes here.
 
+![Kicking off the build](images/job_kicked.png)
+
 When you commit to the main branch, it will kick off a build.  You'll get an AKS cluster with a service principal.  You can add custom names and features to the parameters file.
+
+![Kicking off the build](images/actions_run.png)
 
 To access your public IP from the loadbalancer:
 
