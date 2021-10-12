@@ -95,7 +95,7 @@ When you commit to the main branch, it will kick off a build.  You'll get an AKS
 To access your public IP from the loadbalancer:
 
 ```bash
-az aks get-credentials --name voteappprod --resource group <resource group name>
+az aks get-credentials --name <resource group name> --resource group <resource group name>
 
 kubectl get services --all-namespaces
 ```
@@ -113,21 +113,3 @@ voteappprod   azure-vote-front                 LoadBalancer   10.0.19.38     1.2
 ```
 
 ![Voting App](images/vote-app.png)
-
-## With Azure CLI
-
-You can execute the following command in the root of the directory with an authenticated Azure CLI.
-
-This example creates a resource group then creates a deployment with ARM.
-
-```bash
-az login
-
-az group create -n <resource group name> -l <location>
-
-az deployment group create  --name <deployment name>  --resource-group <resource group name> --template-file aks.bicep --parameters='@azuredeploy.parameters.json'
-
-az aks get-credentials --name voteappprod --resource group <resource group name>
-
-kubectl apply -f ./manifests/deployment.yml
-```
