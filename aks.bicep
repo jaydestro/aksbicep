@@ -12,7 +12,11 @@ param sshRSAPublicKey string
 param servicePrincipalClientId string
 
 @description('The unique name for the AKS cluster, such as myAKSCluster.')
-param uniqueclustername string
+param uniqueclustername string = resourceGroup()
+
+@secure()
+@description('Unique DNS name.')
+param dnsPrefix string = resourceGroup()
 
 @secure()
 @description('The secret password associated with the service principal.')
