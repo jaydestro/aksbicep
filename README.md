@@ -22,7 +22,7 @@ An example to create an AKS cluster with secrets from Azure Key Vault with Bicep
 
 ## Deployment
 
-* Create an [Azure Resource Group](https://cda.ms/2nG)
+* Create a unique [Azure Resource Group](https://cda.ms/2nG). We're using this as a paramater for several portions of the workshop, so please ensure the name is unique.  For example `aksbicepjagord01`
 
 `az group create -n <rg name> --location <region>`
 
