@@ -1,6 +1,6 @@
 // mandatory params
 @description('The unique DNS prefix for your cluster, such as myakscluster. This cannot be updated once the Managed Cluster has been created.')
-param dnsPrefix string
+param dnsPrefix string = resourceGroup().name
 
 @description('The administrator username to use for Linux VMs.')
 param linuxAdminUsername string
@@ -12,7 +12,7 @@ param sshRSAPublicKey string
 param servicePrincipalClientId string
 
 @description('The unique name for the AKS cluster, such as myAKSCluster.')
-param uniqueclustername string
+param uniqueclustername string = resourceGroup().name
 
 @secure()
 @description('The secret password associated with the service principal.')
