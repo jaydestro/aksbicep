@@ -50,7 +50,10 @@ Create the RG in shell.
 
 `az ad sp create-for-rbac --name {myApp} --role contributor --scopes /subscriptions/{subscription-id}/resourceGroups/{MyResourceGroup} --sdk-auth`
 
-* Create secrets in the repo for `AZURE_CREDENTIALS`, `AZURE_RG`, and `AZURE_SUBSCRIPTION` to connect your Azure account to the GitHub repo for actions to run OR use the CLI command below to create the required service principal.
+* Go to your GitHub repo you created from template. Click Settings, then click Secrets.
+* Click "New Repository Secret"
+* Create secrets in the repo for `AZURE_CREDENTIALS`, `AZURE_RG`, and `AZURE_SUBSCRIPTION` to connect your Azure account to the GitHub repo for actions to run.
+* Paste the entire contents of the JSON generated for the service principle in `AZURE_CREDENTIALS`.  `AZURE_RG` and `AZURE_SUBSCRIPTION` should be single lines of both values.  
 
 * [Create a Key Vault](https://cda.ms/2kB)
 
