@@ -14,11 +14,18 @@ An example to create an AKS cluster with secrets from Azure Key Vault with Bicep
 
 * An [SSH public key](https://cda.ms/2nD).
 
-* Fork this repository so you can run GitHub Actions
+To create a key:
+
+`ssh-keygen -m PEM -t rsa -b 4096`
+
+If you're not familiar with the format of an SSH public key, you can display your public key with the following cat command, replacing `~/.ssh/id_rsa.pub` with the path and filename of your own public key file if needed:
+`cat ~/.ssh/id_rsa.pub`
+
+* Use the template for this repository so you can run GitHub Actions
 
 * [Sign up for Azure, $200 free credit](https://cda.ms/2kz)
 
-* Clone the fork locally or in your Azure Cloud Shell.
+* Clone the new template locally or in your Azure Cloud Shell.
 
 ## Deployment
 
