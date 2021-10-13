@@ -92,7 +92,7 @@ Create the RG in shell.
     * Click create
   * Repeat steps for `servicePrincipalClientId` and `servicePrincipalClientSecret`
 
-![Azure Resource Group](images/key-vault2.png)
+![Azure Key Vault Secrets](images/key-vault_2.png)
 
 * Update [azuredeploy.parameters.json](https://github.com/jaydestro/aks_bicep_template/blob/main/azuredeploy.parameters.json) with  the name of your resource group to `uniqueclustername`, `dnsPrefix`.
 
