@@ -53,7 +53,9 @@ Create the RG in shell.
 * Go to your GitHub repo you created from template. Click Settings, then click Secrets.
 * Click "New Repository Secret"
 * Create secrets in the repo for `AZURE_CREDENTIALS`, `AZURE_RG`, and `AZURE_SUBSCRIPTION` to connect your Azure account to the GitHub repo for actions to run.
-* Paste the entire contents of the JSON generated for the service principle in `AZURE_CREDENTIALS`.  `AZURE_RG` and `AZURE_SUBSCRIPTION` should be single lines of both values.  
+* Paste the entire contents of the JSON generated for the service principle in `AZURE_CREDENTIALS`.  `AZURE_RG` and `AZURE_SUBSCRIPTION` should be single lines of both values. 
+
+![Azure Credentials Secret in GitHub Actions](images/credentials.png)
 
 * [Create a Key Vault](https://cda.ms/2kB)
 
