@@ -29,7 +29,7 @@ If you're not familiar with the format of an SSH public key, you can display you
 
 ## Deployment
 
-* Create a unique [Azure Resource Group](https://cda.ms/2nG). We're using this as a paramater for several portions of the workshop, so please ensure the name is unique.  For example `aksbicepjagord01`
+* Create a unique [Azure Resource Group](https://cda.ms/2nG). We're using this as a paramater for several portions of the workshop, so please ensure the name is unique.  For example `aksbicepcreate`
 
 Shell enviroment variables:
 
