@@ -51,14 +51,26 @@ Create the RG in shell.
 
 `az ad sp create-for-rbac --name $NAME --role contributor --scopes /subscriptions/$SUBSCRIPTION/resourceGroups/$NAME --sdk-auth > sp.txt` 
 
+This `sp.txt` file now contains your service principal credentials to login to your Azure account when running GitHub Actions.  Now to add them as secrets within the GitHub Secrets environment variables.
+
+`AZURE_CREDENTIALS` is the output of `sp.txt`
+`AZURE_RG` is your resource group name set in the `$NAME` variable.
+`AZURE_SUBSCRIPTION` is the subscription ID in your `$SUBSCRIPTION` variable.
+
 * Go to your GitHub repo you created from template. Click Settings, then click Secrets.
 * Click "New Repository Secret"
 * Create secrets in the repo for `AZURE_CREDENTIALS`, `AZURE_RG`, and `AZURE_SUBSCRIPTION` to connect your Azure account to the GitHub repo for actions to run.
-* Paste the entire contents of the JSON generated for the service principle in `AZURE_CREDENTIALS`.  `AZURE_RG` and `AZURE_SUBSCRIPTION` should be single lines of both values. 
+* Paste the entire contents of the JSON generated for the service principal in `AZURE_CREDENTIALS`.  `AZURE_RG` and `AZURE_SUBSCRIPTION` should be single lines of both values. 
 
 ![Azure Credentials Secret in GitHub Actions](images/credentials.png)
 
 * [Create a Key Vault](https://cda.ms/2kB)
+
+CLI
+
+`az keyvault create --name "$NAME" --resource-group "$NAME" --location "$LOCATION" --enabled-for-template-deployment=true --enabled-for-disk-encryption --enabled-for-deployment`
+
+or Portal
 
   * Click Create at top of resource group
   * Search for Key Vault
