@@ -32,7 +32,9 @@ If you're not familiar with the format of an SSH public key, you can display you
 
 * Get your subscription ID, set as a variable
 
-SUBSCRIPTION=`az account show --query "id" -o tsv`
+```
+SUBSCRIPTION=(`az account show --query "id" -o tsv`)
+```
 
 * Create a unique [Azure Resource Group](https://cda.ms/2nG). We're using this as a paramater for several portions of the workshop, so please ensure the name is unique.  For example `aksbicepcreate`
 
