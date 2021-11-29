@@ -129,7 +129,7 @@ When you commit to the main branch, it will kick off a build.  You'll get an AKS
 To access your public IP from the loadbalancer:
 
 ```bash
-az aks get-credentials --name <resource group name> --resource-group <resource group name>
+az aks get-credentials --name $NAME --resource-group $NAME
 
 kubectl get services --all-namespaces
 ```
