@@ -29,6 +29,11 @@ If you're not familiar with the format of an SSH public key, you can display you
 
 ## Deployment
 
+
+* Get your subscription ID, set as a variable
+
+SUBSCRIPTION=`az account show --query "id" -o tsv`
+
 * Create a unique [Azure Resource Group](https://cda.ms/2nG). We're using this as a paramater for several portions of the workshop, so please ensure the name is unique.  For example `aksbicepcreate`
 
 Shell enviroment variables:
@@ -42,13 +47,9 @@ Create the RG in shell.
 
 `az group create -n $NAME --location $LOCATION`
 
-* Get your subscription ID
-
-`az account list --query "[?isDefault]"`
-
 * Follow the ["Generate deployment credentials"](https://cda.ms/2kx) and ["Configure the GitHub secrets"](https://cda.ms/2ky) of this guide.  
 
-`az ad sp create-for-rbac --name {myApp} --role contributor --scopes /subscriptions/{subscription-id}/resourceGroups/{MyResourceGroup} --sdk-auth`
+`az ad sp create-for-rbac --name $NAME --role contributor --scopes /subscriptions/$SUBSCRIPTION/resourceGroups/$NAME --sdk-auth > sp.txt` 
 
 * Go to your GitHub repo you created from template. Click Settings, then click Secrets.
 * Click "New Repository Secret"
